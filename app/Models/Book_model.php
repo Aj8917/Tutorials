@@ -13,9 +13,10 @@
               $db =\Config\Database::connect();
               $builder=$db->table('books');
         }
-        public function index()
+        public function get_all_books()
         {
-
+            $query=$this->db->query('select * from books');
+            return $query;
         }
  }
 
