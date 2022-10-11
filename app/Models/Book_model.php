@@ -18,6 +18,6 @@
             $query=$this->db->query('select * from books');
             return $query;
         }
- }
+ }// class
 
 
