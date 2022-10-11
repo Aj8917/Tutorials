@@ -18,6 +18,14 @@
             $query=$this->db->query('select * from books');
             return $query;
         }
+
+        public function get_by_id($id)
+        {
+            $sql="select * from books where book_id=".$id;
+            $query =  $this->db->query($sql);
+        
+            return $query->getRow();
+        }
  }// class
 
 
