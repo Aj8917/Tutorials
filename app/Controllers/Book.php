@@ -10,7 +10,7 @@ class Book extends Controller {
  
  
     public function index() {
-         
+         die('in');
         helper(['form', 'url']);
         $this->Book_model = new Book_model();
         $data['books'] = $this->Book_model->get_all_books();
