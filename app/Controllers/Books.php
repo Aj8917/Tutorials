@@ -1,42 +1,4 @@
 <?php
-
-namespace App\Controllers;
-
-use codeigniter\Controller;
-use CodeIgniter\HTTP\RequestInterface;
-use CodeIgniter\HTTP\ResponseInterface;
-use App\Models\Book_model;
-
-class Books extends BaseController
-{
-    public function __construct()
-        {
-              parent::__construct();
-              $this->Book_model = new Book_Model();
-              helper(['form', 'url']);
-        }
-    public function index()
-    {
-        //return view('welcome_message');
-        
-        $data['books']=$this->Book_model->get_all_books();
-        return view('book_view',$data);
-    }
-     
-    public function book_add()
-    {
-        $data = array(
-                'book_isbn'=>$this->request->getPost('book_isbn'),
-                'book_title' => $this->request->getPost('book_title'),
-                'book_author' => $this->request->getPost('book_author'),
-                'book_category' => $this->request->getPost('book_category'),
-        
-            );
-            $insert = $this->Book_model->book_add($data);
-            echo json_encode(array("status" => TRUE));
-    }
-
-    <?php
  
 namespace App\Controllers;
  
