@@ -102,5 +102,5 @@ class Book extends Controller {
         echo json_encode(array("status" => TRUE));
     }
  
-}
+
 }// class 
