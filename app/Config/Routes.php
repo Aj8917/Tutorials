@@ -21,7 +21,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override(function(){
-    echo "your error message";
+    echo  "404your error message";
 });
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
@@ -38,7 +38,12 @@ $routes->set404Override(function(){
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-
+$routes->get('/book', 'Book::index');
+$routes->post('/book_add', 'book::book_add');
+$routes->post('/book_update', 'book::book_update');
+$routes->get('/ajax_edit/(:num)', 'book::ajax_edit/$1');
+$routes->post('/book_delete/(:num)', 'book::book_delete/$1');
+//$routes->get('/book_delete/(:num)','book::book_delete/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

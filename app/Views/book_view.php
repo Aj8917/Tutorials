@@ -81,7 +81,7 @@
             <?php header('Content-type: application/json'); ?>
             //Ajax Load data from ajax
             $.ajax({
-                url: "<?php echo site_url('public/index.php/book/ajax_edit/') ?>/" + id,
+                url: "<?php echo site_url('ajax_edit') ?>/" + id,
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
@@ -104,9 +104,9 @@
         function save() {
             var url;
             if (save_method == 'add') {
-                url = "<?php echo site_url('public/index.php/book/book_add') ?>";
+                url = "<?php echo site_url('book_add') ?>";
             } else {
-                url = "<?php echo site_url('public/index.php/book/book_update') ?>";
+                url = "<?php echo site_url('book_update') ?>";
             }
             // ajax adding data to database
             $.ajax({
@@ -126,17 +126,21 @@
         }
 
         function delete_book(id) {
-            if (confirm('Are you sure delete this data?')) {
+            if (confirm('Are you sure delete this data?'))
+             {
+                
                 // ajax delete data from database
                 $.ajax({
-                    url: "<?php echo site_url('public/index.php/book/book_delete') ?>/" + id,
+                    url: "<?php echo site_url('book_delete')?>/"+id,
                     type: "POST",
                     dataType: "JSON",
-                    success: function(data) {
+                    success: function(data) 
+                    {
                         location.reload();
                     },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        alert('Error deleting data');
+                    error: function(jqXHR, textStatus, errorThrown) 
+                    {
+                        alert(errorThrown);
                     }
                 });
             }
